@@ -3,8 +3,8 @@ on:
   push:
     paths:
       - "package.json"
-      - "src-tauri/Cargo.toml"
-      - "src-tauri/tauri.conf.json"
+      - "src-backend/tauri/Cargo.toml"
+      - "src-backend/tauri/tauri.conf.json"
       - ".github/workflows/version-check.yml"
     branches:
       - "main"
@@ -17,8 +17,8 @@ on:
       - synchronize
     paths:
       - "package.json"
-      - "src-tauri/Cargo.toml"
-      - "src-tauri/tauri.conf.json"
+      - "src-backend/tauri/Cargo.toml"
+      - "src-backend/tauri/tauri.conf.json"
       - ".github/workflows/version-check.yml"
 
 permissions:
@@ -29,19 +29,19 @@ jobs:
     name: Version Consistency Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
       - id: package-json
-        uses: mikefarah/yq@b534aa9ee5d38001fba3cd8fe254a037e4847b37 # v4.45.4
+        uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
         with:
           cmd: yq -oy '.version' package.json
       - id: cargo-toml
-        uses: mikefarah/yq@b534aa9ee5d38001fba3cd8fe254a037e4847b37 # v4.45.4
+        uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
         with:
-          cmd: yq -oy '.package.version' src-tauri/Cargo.toml
+          cmd: yq -oy '.package.version' src-backend/tauri/Cargo.toml
       - id: tauri-conf-json
-        uses: mikefarah/yq@b534aa9ee5d38001fba3cd8fe254a037e4847b37 # v4.45.4
+        uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
         with:
-          cmd: yq -oy '.version' src-tauri/tauri.conf.json
+          cmd: yq -oy '.version' src-backend/tauri/tauri.conf.json
       - name: Check Version Consistency
         run: |
           echo "Package.json version: ${{ steps.package-json.outputs.result }}"

@@ -1,0 +1,54 @@
+[workspace]
+members = ["tauri/", "crates/*"]
+resolver = "2"
+
+[workspace.package]
+rust-version = "1.86"
+edition = "2024"
+license = "MIT"
+authors = ["KonoAsset Developers"]
+repository = "https://github.com/siloneco/KonoAsset/"
+
+[workspace.dependencies]
+# Local crates
+booth = { path = "./crates/booth", version = "0.0.0" }
+changelog = { path = "./crates/changelog", version = "0.0.0" }
+file = { path = "./crates/file", version = "0.0.0" }
+language = { path = "./crates/language", version = "0.0.0" }
+loader = { path = "./crates/loader", version = "0.0.0" }
+logging = { path = "./crates/logging", version = "0.0.0" }
+model = { path = "./crates/model", version = "0.0.0" }
+state = { path = "./crates/state", version = "0.0.0" }
+storage = { path = "./crates/storage", version = "0.0.0" }
+task = { path = "./crates/task", version = "0.0.0" }
+zip = { path = "./crates/zip", version = "0.0.0" }
+
+# Crates for building Tauri app
+tauri-build = { version = "2", features = [] }
+
+# Tauri crates
+tauri = { version = "2.11.5", features = ["protocol-asset"] }
+tauri-plugin-shell = "2"
+tauri-plugin-deep-link = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-single-instance = {version = "2", features = ["deep-link"] }
+tauri-plugin-updater = "2"
+tauri-plugin-window-state = "2"
+
+# External crates
+tokio = { version = "1", features = ["process", "macros"] }
+tokio-util = { version = "0.7", features = ["compat"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+log = { version = "0.4", features = ["std"] }
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+reqwest = { version = "0.13", features = ["json", "blocking"] }
+async_zip = { version = "0.0.18", features = ["full"] }
+sanitize-filename = "0.6.0"
+specta = {version = "=2.0.0-rc.22", features = ["uuid", "chrono"] }
+specta-typescript = "0.0.9"
+tauri-specta = { version = "=2.0.0-rc.21", features = ["derive", "typescript"] }
+trash = "5"
+anyhow = "1"
+thiserror = "2"

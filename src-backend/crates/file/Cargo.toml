@@ -1,0 +1,22 @@
+[package]
+name = "file"
+version = "0.0.0"
+repository.workspace = true
+description = "File related operation library"
+
+rust-version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+tokio.workspace = true
+log.workspace = true
+serde.workspace = true
+specta.workspace = true
+trash.workspace = true
+uuid.workspace = true
+thiserror.workspace = true
+showfile = { version = "0.1.1" }
+opener = { version = "0.8.5" }
+image = { version = "0.25.10" }

@@ -1,4 +1,4 @@
-import { SetupPage } from '@/components/page/Setup'
+import { AnimatedSetupPage } from '@/pages/AnimatedSetup'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/setup')({
@@ -6,5 +6,5 @@ export const Route = createFileRoute('/setup')({
 })
 
 function RouteComponent() {
-  return <SetupPage />
+  return <AnimatedSetupPage />
 }
